@@ -1,0 +1,11 @@
+@SpringBootApplication
+
+//3.@ComponentScan
+
+public class AppStart {
+    public static void main(String[] args) {
+        SpringApplication.run(AppStart.class);
+
+    }
+
+} //class end

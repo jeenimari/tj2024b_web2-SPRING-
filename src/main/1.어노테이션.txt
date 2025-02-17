@@ -1,0 +1,40 @@
+[@ : 메타 어노테이션 만들기]
+    1.인터페이스 으로 정의한 타입
+    2.가장 큰 목적은 다형성 , 리플렉션(동적처리),유지보수 향상
+    3.만들기
+    1.인터페이스 키워드 앞에 @ 붙임
+        @Retention(): 어노테이션 생성주기(유지기간)을 설정
+            @Retenion(RetentionPolicy.Source) : 컴파일 후 삭제됨
+            @Retention(RetentionPolicy.CLASS) : .class 파일에 포함. 실행 중에는 사용안함
+            @Retention(RetentionPolicy.RuNTIME) : 실행중 리플렉션 통해 사용
+        @Target( ) : 어노테이션 적용할 수 있는 위치(대상)설정
+            @Target(ElemtentType.TYPE) : 클래스,인터페이스,열거형 타입 사용
+            @Target(ElementTYPE.FIELD) : 멤버변수 에서 사용
+            @Target(ElementType.METHOD) : 메소드에서 사용
+            @Target(ElementType.PARAMETER) : 메소드 매개변수에서 사용
+            @Target(ElementType.CONSTRUCTOR):생성자에서 사용
+            @Target(ElementType.LOCAL_VARIABLE) : 지역변수에서 사용
+        @interface 인터페이스명{ }
+
+    2.추상메소드 만든다.
+        -추상메소드란 : 메소드 의 구현부 없고 선언부만 선언하는 메소드
+    3.선언한 어노테이션을 사용할 코드위에 @생성한 어노테이션명
+        @Anotation1();
+
+        public void method3(){}
+    4.( ) 안에 속성 값을 대입할 수 있다.
+        @Anotation1(value1 = "value1 값 저장")
+        public void method3(){}
+
+        어노테이션을 주입받은 코드에서는 어노테이션 코드들을 사용할 수 있다.
+        *미리 만들어진 코드를 주입/물려받는 개념
+        1.상속 : 컴파일 2.어노테이션 : 리플렉션(동적처리)
+
+4.실행 중(동적처리) 어노테이션 기능들이 주입이 됨
+5.리플렉션 클래스 정보 확인
+    // try {
+              Method method = 확인할클래스명.class.getMethod("확인할 메소드");
+               확인할 어노테이션명 변수명 = method.getAnnotation(확인할어노테이션.class); //
+              System.out.println(변수명.value1());
+          }catch (Exception e){
+              System.out.println(e);}

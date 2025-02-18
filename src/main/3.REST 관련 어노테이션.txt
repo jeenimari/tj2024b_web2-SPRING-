@@ -1,0 +1,46 @@
+[Rest] 표현 상태 교환
+    1.웹의 자원을 관리하는 아키텍처
+    2.자원(resource) 행동 (method) 표현 개념
+    3.HTTP 프로토콜 이용하여 클라이언트(유저) <--> 서버(톰캣)간 통신을 일관성있게 구성
+
+[Rest API]
+    1.REST 아키텍처에 따른 API(Application Programming Interface)
+    2.REST 기반의 웹서비스 인터페이스 구축
+    3.HTTP 요청을 통해 자원을 C R U D 할 수 있도록 제공
+[RESTful API]
+    1.REST API 의 아키텍처를 잘 사용하지에 대한 개념
+    2.조건
+        -일관성된 uri : /board , /member
+        -적절한 HTTP 메소드 사용 : GET, POST, PUT, DELETE
+        -무상태성 유지 vs 소켓
+        -응답 데이터는 JSON /XML 제공
+
+
+[REST 관련 주요 어노테이션] : Spring web 에서는 REST 관련 어노테이션 지원
+1.@controller   : HTTP 요청 처리 ( 주로 HTML 반환)
+2.@RestController : HTTP 요청/응답 처리 (+ResponseBody포함 , 주로 json 반환)
+3.@RequestMapping  : HTTP 요청 URL 매핑 ( 주로 공통 URL 정의 할때 사용. 클래스위에서)
+
+4.@PostMapping  : HTTP POST 요청 매핑 (Create, 생성 , insert)
+5.@GetMapping   : HTTP GET 요청 매핑 ( Read,조회, select)
+6.@PutMapping   : HTTP PUT 요청 매핑 (Update, 수정, update)
+7.@DeleteMapping : HTTP DELETE 요청 매핑 (Delete, 삭제, delete)
+
+8.@ResponseBody  : HTTP 응답을 JSON으로 자동 변환하여 응답 , RestController에 포함되므로 생략가능
+9.@ReuqestParam  : HTTP queryString , form-Data 에서 기본타입+공식타입 값 매핑
+10.RequestBody   : HTTP 요청의 body(본문)'application/json' 에서 자바 객체로 값 매핑
+11.@ModelAttribute : HTTP 요청 매핑의 기본 어노테이션 생략가능 , queryString 에서 사용됨
+
+
+동적페이지 = @컨트롤러
+값(리소스,제이슨)  = @레스트 컨트롤러
+
+공통 URL = @리퀘 맵핑
+특정 URL = @xxxMapping
+
+
+쿼리스트링 = 리퀘파람
+
+리퀘바디 = 바디
+
+모델어트리부트=폼 데이타 ㄱㄱ

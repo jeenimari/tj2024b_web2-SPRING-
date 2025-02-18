@@ -1,65 +1,127 @@
-package example.day01._3과제;
+package example.day02._3과제;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController  // (1) 해당 컨트롤러가 HTTP url 매핑 할 수 있도록 어노테이션 주입
 public class BoardController {
 
-    @PostMapping("/day01/task/board")
-    @ResponseBody
-    public boolean boardWrite() {
+    private final List<BoardDto> boardTable = new ArrayList<>();
+    private int auto_increment = 1; // bno 자동번호 역할
 
-       return false;
+    // (3) POST 매핑으로 '/day02/task1/board' 주소의 body값을 dto로 매핑하여 함수 매개변수로 받는다,
+    @PostMapping("/day02/task1/board") // 1. POST 매핑주소를 만든다.
+    public boolean method1( @RequestBody BoardDto boardDto ){ // 2.body 값을 함수 매개변수로 매핑한다.
+        boardDto.setBno( auto_increment ); // 3. boardDto의 bno를 넣어준다.
+        boardTable.add( boardDto ); // 4. 리스트에 boardDto를 넣어준다.
+        auto_increment++; // 5. auto_increment 증가한다.
+        return true; // 6. 리턴한다.
+    } // f end
 
+    // (4) GET 매핑
+    @GetMapping("/day02/task1/board")
+    public List<BoardDto> method2(){
+        return boardTable;
+    } // F END
 
-
-    }
-
-    @GetMapping("/day01/task/board")
-    @ResponseBody
-    public List<Map<String, Object>> boardList() {
-        List<Map<String, Object>> list = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
-            Map<String, Object> map = new HashMap<>();
-            map.put("bno", i + 1);
-            map.put("title", "제목 " + (i + 1));
-            list.add(map);
+    // (5) GET 매핑
+    @GetMapping("/day02/task1/board/view")
+    public BoardDto method3( @RequestParam( name = "bno") int bno ){
+        for( int index = 0 ; index <= boardTable.size()-1 ; index++ ){
+            BoardDto boardDto = boardTable.get(index);
+            if( boardDto.getBno() == bno ){ return boardDto; } // 찾았으면 찾은 DTO 반환
         }
+        return null; // 없으면
+    } // F END
 
-        return list;
-    }
+    // (6) PUT 매핑
+    @PutMapping("/day02/task1/board")
+    public boolean method4( @RequestBody BoardDto boardDto ){
+        for( int index = 0 ; index <= boardTable.size()-1 ; index++ ){
+            BoardDto boardDto2 = boardTable.get( index );
+            if( boardDto2.getBno() == boardDto.getBno() ){
+                boardTable.set( index , boardDto );
+                return true;
+            }
+        }
+        return false;
+    } // f end
 
-
-    @GetMapping("/day01/task/board/view")
-    @ResponseBody
-    public Map<String, Object> boardView() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("bno", "1");
-        map.put("Title", "테스트입니다");
-
-
-        return map;
-    }
-
-    @PutMapping("/day01/task/board")
-    @ResponseBody
-    public boolean boardUpdate() {
-
-        return true;
-    }
-
-    @DeleteMapping("/day01/task/board")
-    @ResponseBody
-    public int boardDelete() {
-        return 3;
-    }
-}
-
+    // (7) DELETE 매핑
+    @DeleteMapping("/day02/task1/board")
+    public boolean mehtod5( @RequestParam( name = "bno") int bno ){
+        for( int index = 0 ; index <= boardTable.size()-1 ; index++  ){
+            BoardDto boardDto2 = boardTable.get(index);
+            if( boardDto2.getBno() == bno ){
+                boardTable.remove( index );
+                return true;
+            }
+        }
+        return false;
+    } // f end
 
 
+
+
+
+
+} // c end
+
+//
+//    // (2) 현재 과제에서는 DB가 없으므로 리스트가 DB 역할 한다.
+//    private final List<BoardDto> boardTable = new ArrayList<>();
+//    private int auto_increment = 1; // bno 자동번호 역할
+//
+//    // (3) POST 매핑으로 '/day02/task1/board' 주소의 body값을 dto로 매핑하여 함수 매개변수로 받는다,
+//    @PostMapping("/day02/task1/board") // 1. POST 매핑주소를 만든다.
+//    public boolean method1( @RequestBody BoardDto boardDto ){ // 2.body 값을 함수 매개변수로 매핑한다.
+//        boardDto.setBno( auto_increment ); // 3. boardDto의 bno를 넣어준다.
+//        boardTable.add( boardDto ); // 4. 리스트에 boardDto를 넣어준다.
+//        auto_increment++; // 5. auto_increment 증가한다.
+//        return true; // 6. 리턴한다.
+//    } // f end
+//
+//    // (4) GET 매핑
+//    @GetMapping("/day02/task1/board")
+//    public List<BoardDto> method2(){
+//        return boardTable;
+//    } // F END
+//
+//    // (5) GET 매핑
+//    @GetMapping("/day02/task1/board/view")
+//    public BoardDto method3( @RequestParam( name = "bno") int bno ){
+//        for( int index = 0 ; index <= boardTable.size()-1 ; index++ ){
+//            BoardDto boardDto = boardTable.get(index);
+//            if( boardDto.getBno() == bno ){ return boardDto; } // 찾았으면 찾은 DTO 반환
+//        }
+//        return null; // 없으면
+//    } // F END
+//
+//    // (6) PUT 매핑
+//    @PutMapping("/day02/task1/board")
+//    public boolean method4( @RequestBody BoardDto boardDto ){
+//        for( int index = 0 ; index <= boardTable.size()-1 ; index++ ){
+//            BoardDto boardDto2 = boardTable.get( index );
+//            if( boardDto2.getBno() == boardDto.getBno() ){
+//                boardTable.set( index , boardDto );
+//                return true;
+//            }
+//        }
+//        return false;
+//    } // f end
+//
+//    // (7) DELETE 매핑
+//    @DeleteMapping("/day02/task1/board")
+//    public boolean mehtod5( @RequestParam( name = "bno") int bno ){
+//        for( int index = 0 ; index <= boardTable.size()-1 ; index++  ){
+//            BoardDto boardDto2 = boardTable.get(index);
+//            if( boardDto2.getBno() == bno ){
+//                boardTable.remove( index );
+//                return true;
+//            }
+//        }
+//        return false;
+//    } // f end

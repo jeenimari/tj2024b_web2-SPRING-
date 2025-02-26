@@ -1,0 +1,44 @@
+[AXIOS]
+     특징
+        -json 타입으로 자동 변환
+        -Node.js 환경 지원 .CSRF
+
+
+
+    1.설치 ( 각 환경마다 다름)
+     js:  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    react(npm) : ~
+
+    2.문법
+        axios.HTTP메소드명('통신할 HTTP주소'
+            1.HTTP메소드명 : axios.post() ,axios.get() , axios.put() , axios.delete()
+            2.통신할HTTP주소 : 스프링환경에서는 RestController 정의한 매핑주소
+                @GetMappling("/day04/student")---->'/day04/student'
+                *JSP 프로젝트와 다르게 '프로젝트명' 생략함.
+
+            3.body : 보낼 자료/데이터 객체{ }
+            4.option : HTTP 설정
+                * 기본값은 content -type : 'application/json'
+    3.관례적인 유형들 : 여러개 통신을 순차러리 = 동기화 , 여러개 통신 동시처리 = 비동기화
+        1.비동기 유형1
+        ( )=>{
+            axios.post('',{ } , { })
+            .then(response=> console.log(repsponse.data))
+            .catch(e=>{console.log(e);}
+
+            }
+
+        2.동기 유형2
+        async()=>{
+            await axios.post('',{ } , { })
+            .then(response=> console.log(repsponse.data))
+            .catch(e=>{console.log(e);})
+
+            }
+
+        3.동기 유형3
+        async ( ) => {
+         const response = await axios.post('',{ } , { });
+         console.log(response.data);
+         }catch(e){console.log(e);}
+         }

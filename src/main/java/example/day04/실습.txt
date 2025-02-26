@@ -1,0 +1,9 @@
+[스프링 실습]
+
+주제 : 학생점수관리
+    1.AppStart 클래스
+    2.StudentController
+    3.StudentService
+    4.StudentMapper
+    5.Stundent Dto
+    6.StudentMapper.XML 생성없이 매핑

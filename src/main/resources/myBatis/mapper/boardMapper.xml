@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="example.day03._과제.BoardMapper">
+    <!--XML 주석은 HTML 과 동일 . xml은 마크업언어임-->
+    <!--[1]insert-->
+    <insert id="write" parameterType="example.day03._과제.BoardDto">
+        insert into user(title,content)values(#{title},#{content})
+    </insert>
+    <!--[2]select-->
+    <select id="findAll" resultType="example.day03._과제.BoardDto" >
+        select * from user
+
+    </select>
+    <!--[3]select-->
+    <select id="find" parameterType="int"
+            resultType="example.day03._과제.BoardDto">
+        select*from user where bno =#{bno}
+    </select>
+
+    <!--[4]update-->
+    <update id="update" parameterType="example.day03._과제.BoardDto">
+        update user set content = #{content},title=#{title} where bno=#{bno}
+    </update>
+    <!--[5]delete-->
+    <delete id="delete" parameterType="example.day03._과제.BoardDto">
+        delete from user where bno =#{bno}
+    </delete>
+</mapper>

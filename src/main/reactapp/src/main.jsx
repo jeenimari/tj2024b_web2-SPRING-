@@ -24,5 +24,19 @@ const root = createRoot( document.querySelector('#root') )
 
   //day03 : 생명주기 feat 훅
 
-  import Example1 from './example/3_훅/Example1.jsx'
-  root.render(<Example1/>)
+  // import Example1 from './example/3_훅/Example1.jsx'
+  // root.render(<Example1/>)
+
+
+  // import Example2 from './example/3_훅/Example2.jsx'
+  // root.render(<Example2/>)
+
+  // import Example3 from './example/3_훅/Example3.jsx'
+  // root.render(<Example3/>)
+
+  // import Task from './example/3_훅/Task.jsx'
+  // root.render(<Task/>)
+
+  import Task2 from './example/3_훅/Task2.jsx'
+  root.render(<Task2/>)
+  

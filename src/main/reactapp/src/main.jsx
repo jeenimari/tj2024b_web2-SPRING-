@@ -19,5 +19,10 @@ const root = createRoot( document.querySelector('#root') )
   // import Example2 from './example/2_컴포넌트/2_컴포넌트/Example2.jsx'
   // root.render(<Example2/>)
 
-  import Task from './example/2_컴포넌트/2_컴포넌트/Task.jsx'
-  root.render(<Task/>)
+  // import Task from './example/2_컴포넌트/2_컴포넌트/Task.jsx'
+  // root.render(<Task/>)
+
+  //day03 : 생명주기 feat 훅
+
+  import Example1 from './example/3_훅/Example1.jsx'
+  root.render(<Example1/>)

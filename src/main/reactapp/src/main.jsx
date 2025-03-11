@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+// import './index.css'
+// import App from './App.jsx'
 
 // createRoot(document.getElementById('root')).render(
 //   <StrictMode>
@@ -37,6 +37,18 @@ const root = createRoot( document.querySelector('#root') )
   // import Task from './example/3_훅/Task.jsx'
   // root.render(<Task/>)
 
-  import Task2 from './example/3_훅/Task2.jsx'
-  root.render(<Task2/>)
+  // import Task2 from './example/3_훅/Task2.jsx'
+  // root.render(<Task2/>)
   
+  // import Example from './example/6_AXIOS/Example.jsx'
+  // root.render(<Example/>)
+
+  // import Example2 from './example/6_AXIOS/Example2.jsx'
+  // root.render(<Example2/>)
+
+  // import Example3 from './example/6_AXIOS/Example3.jsx'
+  // root.render(<Example3/>)
+
+  //day06 : 라우터 컴포넌트 렌더링
+  import App from './example/7_AXIOS2/App.jsx'
+  root.render(<App/>)

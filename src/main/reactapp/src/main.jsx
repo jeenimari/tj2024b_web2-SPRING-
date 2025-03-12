@@ -50,5 +50,9 @@ const root = createRoot( document.querySelector('#root') )
   // root.render(<Example3/>)
 
   //day06 : 라우터 컴포넌트 렌더링
-  import App from './example/7_AXIOS2/App.jsx'
+  //import App from './example/7_AXIOS2/App.jsx'
+  //root.render(<App/>)
+
+  import App from './example/8_과제제출/App.jsx'
   root.render(<App/>)
+  

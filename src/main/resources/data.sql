@@ -11,3 +11,10 @@ INSERT INTO student_score (sno, subject, score) VALUES (2, '국어', 78);
 INSERT INTO student_score (sno, subject, score) VALUES (2, '수학', 92);
 
 -- ---------------------- ------ ---------------------------------- --
+
+INSERT INTO member (mid, mpwd, mname) VALUES
+('user1', 'password123', '김철수'),
+('user2', 'qwerty456', '이영희'),
+('user3', 'abcde789', '박민준'),
+('user4', 'helloWorld', '정다은'),
+('user5', 'son1234', '손흥민');

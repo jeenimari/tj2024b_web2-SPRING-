@@ -53,6 +53,11 @@ const root = createRoot( document.querySelector('#root') )
   //import App from './example/7_AXIOS2/App.jsx'
   //root.render(<App/>)
 
-  import App from './example/8_과제제출/App.jsx'
+  // import App from './example/8_과제제출/App.jsx'
+  // root.render(<App/>)
+
+  import App from 'components/member/App.jsx'
   root.render(<App/>)
+
+  
   

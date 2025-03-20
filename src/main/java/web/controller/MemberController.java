@@ -28,7 +28,7 @@ public class MemberController {
     public boolean signUp(@RequestBody MemberDto memberDto){
         System.out.println("MemberController.signUp");
         System.out.println("memberDto = " + memberDto);
-        boolean result = memberService.signUp(memberDto);
+        boolean result = memberService.sigunUp(memberDto);
         System.out.println("result=" + result);
         return result;
     }

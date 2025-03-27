@@ -18,3 +18,8 @@ INSERT INTO member (mid, mpwd, mname) VALUES
 ('user3', 'abcde789', '박민준'),
 ('user4', 'helloWorld', '정다은'),
 ('user5', 'son1234', '손흥민');
+
+-------------------------day 13-------------------------------------------------
+INSERT INTO day13users (name, money) VALUES
+('서장훈', 500000),
+('신동엽', 300000);
